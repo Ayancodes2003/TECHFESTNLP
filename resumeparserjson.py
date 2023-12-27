@@ -1,7 +1,6 @@
 import spacy
 import PyPDF2
 import os
-import csv
 import json
 
 # Load spaCy NLP model
@@ -43,8 +42,7 @@ def read_pdf(file_path):
         return resume_text
 
 # Add your required_skills, required_degrees, and required_experience
-required_skills = ['C', 'C++', 'Python', 'ROS', 'OpenCV', 'Arduino', 'TensorFlow', 'Pytorch',
-'Pandas', 'Numpy']
+required_skills = ['python', 'machine learning', 'data analysis']
 required_degrees = ['Bachelor', 'Master']
 required_experience = ['5 years', 'senior', 'lead']
 
@@ -78,12 +76,7 @@ for resume_file in os.listdir(resumes_directory):
 
     results['resumes'].append(result_entry)
 
-    if meets_criteria:
-        print(f"Resume {resume_file} meets the criteria with {skills_percentage:.2f}% of required skills.")
-    else:
-        print(f"Resume {resume_file} does not meet the criteria with {skills_percentage:.2f}% of required skills.")
-
-# Write results to JSON file
+# Write results to JSON file with indentation for readability
 with open(json_file_path, 'w') as json_file:
     json.dump(results, json_file, indent=2)
 
